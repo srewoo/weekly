@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head><script src="../components/theme-boot.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly</title>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="report.css"></head>
+<body>
+<header class="gnav">
+  <a class="brand" href="report.html">Weekly</a>
+  <nav id="mainNav" class="mainnav" aria-label="Weekly"></nav>
+</header>
+<header class="top">
+  <div>
+    <h1 id="weekLabel">This week</h1>
+    <p id="summary" class="sub"></p>
+  </div>
+  <nav class="weeknav" aria-label="Change week">
+    <button id="prev" aria-label="Previous week">‹ Previous</button>
+    <button id="thisWeek">This week</button>
+    <button id="next" aria-label="Next week">Next ›</button>
+  </nav>
+</header>
+
+<main>
+  <section class="log" aria-label="This week's activity">
+    <div id="sampleBanner" class="connect" hidden>
+      <span>This is a sample week. Your own update fills in as you work.</span>
+      <a id="realUpdate" class="btn primary" href="report.html">Go to my real update</a>
+    </div>
+    <div id="trackingBanner" class="connect" hidden>
+      <span>Tracking is off, so this update is built from your tasks and notes. <span id="trackMsg" role="status"></span></span>
+      <button id="trackOn">Turn on tracking</button>
+    </div>
+    <div id="days" class="days" role="group" aria-label="Time tracked per day"></div>
+    <p class="hint">Untick anything you don’t want in this week’s update.<span id="minNote"> Pages viewed under <span id="minLabel"></span> aren’t listed.</span></p>
+    <div id="histBanner" class="connect" hidden>
+      <span><span id="histText"></span> <span id="histMsg" role="status"></span></span>
+      <button id="histBtn">Fill in from history</button>
+    </div>
+    <p id="estHint" class="hint" hidden>Days and items marked ~ are estimates from your Chrome history (when you opened pages, not how long you looked). Live tracking replaces them.</p>
+    <div id="categories"></div>
+    <div id="connect" class="connect" hidden>
+      <span id="connectText"></span>
+      <span class="row-btns"><button id="connectBtn">Allow status checks</button> <button id="connectLater" class="quiet">Not now</button></span>
+    </div>
+    <p id="backupNudge" class="hint" hidden><span id="backupText"></span> <a href="../settings/settings.html#data">Back up in Settings</a></p>
+    <p class="privacy">Weekly keeps everything on this computer. It records the address and title of the tab you’re looking at and for how long, never what’s on the page. Nothing is shared until you copy or post it.</p>
+  </section>
+
+  <aside class="side">
+    <section class="panel" aria-labelledby="draftTitle">
+      <h2 id="draftTitle">Your update</h2>
+      <div class="view-toggle" role="group" aria-label="Draft view">
+        <button id="viewPreview" aria-pressed="true">Preview</button>
+        <button id="viewEdit" aria-pressed="false">Edit</button>
+      </div>
+      <div class="row copy-row">
+        <label class="copy-as" for="copyAs">Copy as</label>
+        <select id="copyAs"></select>
+        <button id="copyMd" class="primary">Copy update</button>
+        <button id="slackBtn" hidden title="Posts the update to the Slack channel behind your webhook">Post to Slack</button>
+      </div>
+      <div id="shareAsk" class="ask" role="group" aria-labelledby="askText" hidden>
+        <p id="askText"></p>
+        <div class="row"><button id="askOk" class="primary">Continue</button><button id="askCancel">Cancel</button></div>
+      </div>
+      <p id="copyMsg" class="msg" role="status"></p>
+      <div class="draft-opts">
+        <label class="check">Format
+          <select id="template">
+            <option value="weekly">Weekly update</option>
+            <option value="standup">Daily standup</option>
+          </select></label>
+        <label class="check"><input type="checkbox" id="incTime"> Show time spent</label>
+        <label class="check"><input type="checkbox" id="anonymize" aria-describedby="anonHint"> Hide names</label>
+      </div>
+      <p id="anonHint" class="hint">Applies to tracked CRM, HR and support items. Your tasks and notes appear as you wrote them.</p>
+      <div id="preview" class="preview" tabindex="0" aria-label="Update preview"></div>
+      <textarea id="md" rows="18" spellcheck="true" aria-label="Update draft" hidden></textarea>
+      <p class="msg"><span id="draftState" role="status"></span> <button id="regen" class="quiet" hidden title="Replaces your edits with a fresh draft built from this week’s activity">Rebuild draft</button></p>
+      <div class="ai" hidden>
+        <div class="row">
+          <button id="aiBtn" aria-describedby="aiMsg">Polish with on-device AI</button>
+          <button id="aiUndo" class="quiet" hidden>Undo</button>
+        </div>
+        <p id="aiMsg" class="msg" role="status"></p>
+      </div>
+    </section>
+
+    <section class="plain" id="notesSection" aria-labelledby="notesTitle">
+      <h2 id="notesTitle">Other work (notes)</h2>
+      <p class="hint">Calls, meetings, anything outside Chrome. Each note becomes a line in Other work.</p>
+      <div class="row">
+        <input id="noteText" type="text" placeholder="What did you get done?" maxlength="1000" aria-label="New note">
+        <button id="addNote">Add</button>
+      </div>
+      <ul id="notes" class="notes"></ul>
+      <p id="notesMsg" class="msg" role="status"></p>
+    </section>
+
+    <details class="plain" id="trendsPanel" hidden>
+      <summary>Trends (last 8 weeks)</summary>
+      <div id="trends"></div>
+    </details>
+  </aside>
+</main>
+<script type="module" src="main.js"></script>
+</body></html>

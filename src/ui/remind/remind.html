@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><script src="../components/theme-boot.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly reminder</title>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../components/tasks.css"><link rel="stylesheet" href="remind.css"></head>
+<body>
+<header class="rhead">
+  <p id="eyebrow" class="eyebrow"></p>
+  <h1 id="headline"></h1>
+  <p id="sub" class="sub"></p>
+</header>
+<main id="list" class="rbody"></main>
+<p id="weekNudge" class="nudge" hidden><strong id="readyLine"></strong>
+  <button id="openReport" class="primary">Review and copy →</button></p>
+<p id="progress" class="nudge calm" hidden><span id="progressLine"></span>
+  <button id="addNote" class="quiet">Add a note about today</button></p>
+<footer class="rfoot">
+  <button id="moveAll" class="primary" hidden>Move all to tomorrow</button>
+  <button id="openApp">Open Weekly</button>
+  <span class="spacer"></span>
+  <button id="snooze" class="quiet" hidden>Snooze 1 h</button>
+  <button id="dismiss" class="quiet">Dismiss</button>
+</footer>
+<script type="module" src="remind.js"></script>
+</body></html>

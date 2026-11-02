@@ -1,0 +1,40 @@
+{
+  "format": "daybook.tasks",
+  "schemaVersion": 1,
+  "exportedAt": "2026-10-31T18:43:48.996Z",
+  "tasks": [
+    {
+      "id": "t_0j6t2i0e1j22",
+      "title": "Renew the SSL certificate",
+      "description": "",
+      "priority": "high",
+      "dueDate": "2026-11-03",
+      "status": "open",
+      "createdAt": 1793472228995,
+      "updatedAt": 1793472228995,
+      "completedAt": null
+    },
+    {
+      "id": "t_47611e6b1y6s",
+      "title": "Book the team offsite",
+      "description": "Venue for 12, near the office",
+      "priority": "medium",
+      "dueDate": null,
+      "status": "done",
+      "createdAt": 1793472228996,
+      "updatedAt": 1793472228996,
+      "completedAt": 1793472228996
+    },
+    {
+      "id": "t_110y1b464c6d",
+      "title": "Read the Raft paper",
+      "description": "",
+      "priority": "low",
+      "dueDate": null,
+      "status": "open",
+      "createdAt": 1793472228996,
+      "updatedAt": 1793472228996,
+      "completedAt": null
+    }
+  ]
+}

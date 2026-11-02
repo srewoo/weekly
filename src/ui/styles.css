@@ -1,0 +1,112 @@
+/* Weekly: a timesheet on warm paper. Navy ink for actions, one yellow highlighter for "your time". */
+:root {
+  --paper: #f6f4ee;
+  --sheet: #fffdf8;
+  --ink: #1c2333;
+  --muted: #596071;
+  --faint: #666b79;        /* placeholders and disabled labels only */
+  --rule: #ddd8cb;         /* dividers */
+  --rule-strong: #8f8a7c;  /* control borders, 3.4:1 */
+  --navy: #1f3a68;
+  --on-navy: #fffdf8;
+  --marker: #f2cf45;
+  --marker-ink: #3a2f00;
+  --marker-wash: #fbf0bf;
+  --danger: #9b2c26;
+  --on-wash: #3a2f00;      /* text on --marker-wash (pills) */
+  --heat-k: 0.6;           /* how far the calendar shading goes before 100% */
+  --series-b: #b45f06;     /* second chart series, apart from navy in both themes */
+  --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+/* Dark: chosen in Settings (data-theme="dark"), or the computer's choice when the theme is System (F6, L8). */
+:root[data-theme="dark"] {
+  --paper: #14171f;
+  --sheet: #1c202a;
+  --ink: #e9e6dd;
+  --muted: #a0a7b6;
+  --faint: #8a91a1;
+  --rule: #2d3340;
+  --rule-strong: #6b7385;
+  --navy: #9dbcec;
+  --on-navy: #0f1a30;
+  --marker: #e0bd3a;
+  --marker-ink: #1a1500;
+  --marker-wash: #3a3312;
+  --danger: #f0958e;
+  --on-wash: #f1e3a6;
+  --heat-k: 0.3;
+  --series-b: #f0a05a;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14171f;
+    --sheet: #1c202a;
+    --ink: #e9e6dd;
+    --muted: #a0a7b6;
+    --faint: #8a91a1;
+    --rule: #2d3340;
+    --rule-strong: #6b7385;
+    --navy: #9dbcec;
+    --on-navy: #0f1a30;
+    --marker: #e0bd3a;
+    --marker-ink: #1a1500;
+    --marker-wash: #3a3312;
+    --danger: #f0958e;
+  --on-wash: #f1e3a6;
+  --heat-k: 0.3;
+  --series-b: #f0a05a;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.5 var(--sans); }
+a { color: var(--navy); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* One filled button per surface (.primary); everything else is outlined or plain text. */
+button {
+  font: inherit; font-weight: 600; cursor: pointer; border-radius: 4px; min-height: 36px; padding: 6px 12px;
+  border: 1px solid var(--rule-strong); background: transparent; color: var(--navy);
+}
+button:hover { border-color: var(--navy); }
+button.primary { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+button.quiet { border-color: transparent; padding-inline: 6px; }
+button.quiet:hover { text-decoration: underline; }
+button.danger { color: var(--danger); border-color: var(--danger); }
+button:disabled { color: var(--faint); border-color: var(--rule); background: transparent; cursor: not-allowed; }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible, a:focus-visible {
+  outline: 2px solid var(--navy); outline-offset: 2px;
+}
+input[type=text], input[type=number], input[type=search], input[type=date], textarea, select {
+  font: inherit; color: var(--ink); background: var(--sheet); border: 1px solid var(--rule-strong);
+  border-radius: 4px; padding: 6px 8px;
+}
+input[type=text], input[type=number], input[type=search], textarea { width: 100%; }
+input::placeholder, textarea::placeholder { color: var(--faint); }
+input[type=checkbox] { accent-color: var(--navy); width: 18px; height: 18px; margin: 0; }
+.mark { background: linear-gradient(transparent 35%, var(--marker) 35%, var(--marker) 85%, transparent 85%); color: inherit; padding: 0 2px; }
+.privacy { color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+.hint { color: var(--muted); font-size: 14px; }
+/* Calendar and stats shading: --p is the share done (0-100). Soft until everything is done, then full marker. */
+.heat { background: color-mix(in srgb, var(--marker) calc(var(--p, 0) * var(--heat-k) * 1%), var(--marker-wash)); }
+.heat.full { background: var(--marker); color: var(--marker-ink); }
+
+/* The header every page shares: brand and the one nav */
+.gnav { display: flex; gap: 6px 14px; align-items: center; padding: 8px clamp(16px, 4vw, 48px);
+  background: var(--sheet); border-bottom: 1px solid var(--rule); }
+.brand { font: 700 18px/1 var(--serif); color: var(--ink); }
+.brand:hover { text-decoration: none; }
+.brand { flex-shrink: 0; }
+.mainnav { display: flex; gap: 2px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+.mainnav::-webkit-scrollbar { display: none; }
+@media (max-width: 480px) { .brand { display: none; } }
+.mainnav a { white-space: nowrap; padding: 5px 10px; font-weight: 600; border: 1px solid transparent; border-radius: 4px; }
+.mainnav a:hover { text-decoration: none; border-color: var(--rule-strong); }
+.mainnav a[aria-current="page"] { background: var(--marker-wash); border-color: var(--marker); color: var(--ink); }

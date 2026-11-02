@@ -1,0 +1,144 @@
+{
+ "drafts": {
+  "thin": "## Weekly update: Nov 2 to Nov 6\n\n### Merge requests and code\n- Anil-matcha/awesome-generative-ai-apps\n\n### Other\n- chrome.google.com\n",
+  "eng": "## Weekly update: Oct 27 to Oct 31\n\n### Done\n- Write the ENGX-162 postmortem\n- Standup notes (4 of 5 days)\n\n### Tickets\n- ENGX-151: CSV export for reports [In Review]\n  - MR: app !412: Add CSV export endpoint [merged]\n  - Doc: CSV export spec\n- ENGX-158: Login timeout on SSO [In Progress]\n  - MR: app !419: Extend session refresh window [opened]\n- QA-77: Regression suite flaky on Safari [Open]\n\n### Testing\n- Local app (localhost:3000)\n- staging.acme.io\n\n### Data and monitoring\n- Datadog: API latency dashboard\n\n### Meetings\n- 6 calls: Sprint planning; ENGX-151 design review; 1:1 with Priya; Bug triage; Retro; Customer call prep\n\n### Other work\n- Paired with Sam on the flaky Safari tests\n- Investigated memory spike in report worker\n\n### Next week\n- Ship CSV export to beta\n- Fix QA-77 (carried over)\n",
+  "sales": "## Weekly update: Oct 27 to Oct 31\n\n### Sales and customers\n- Customer 1\n- Customer 2\n- Customer 3\n- Support case 1\n\n### Meetings\n- 4 calls: Customer 1 discovery; Pipeline review; Customer 2 demo; Forecast call\n\n### Other work\n- Updated Q4 pricing deck\n",
+  "standup": "## Standup\n\n### Yesterday\n#### Docs, specs and design\n- Onboarding v2 PRD\n- Figma: Onboarding flow\n#### Projects and planning\n- Jira: PROD board\n\n### Today\n- Nothing tracked yet.\n\n### Blockers\n- \n",
+  "empty": "## Weekly update: Nov 2 to Nov 6\n\n_No work-related activity recorded this week yet._\n"
+ },
+ "outputs": [
+  {
+   "id": "thin",
+   "out": "## Weekly Status Update - Nov 2 - Nov 6\n\nHere's a summary of activities from Nov 2 to Nov 6:\n\n*   **Merge Requests:** Progress was made on Anil-matcha/awesome-generative-ai-apps. [Live] status is indicated.\n*   **Chrome Implementation:** Work was conducted related to chrome.google.com.\n\nNo changes to [live] statuses were made. No new issues were identified during this period.",
+   "keep": [
+    "Progress was made on Anil-matcha/awesome-generative-ai-apps"
+   ],
+   "drop": [
+    "[Live]",
+    "No changes",
+    "Here's a summary",
+    "No new issues"
+   ]
+  },
+  {
+   "id": "thin",
+   "out": "## Weekly Status Update (Nov 2 - Nov 6)\n\nHere's a summary of activities:\n\n*   **Merge Requests**: Progress continued on Anil-matcha/awesome-generative-ai-apps.\n*   **External Systems**: Work was performed related to chrome.google.com.\n\n[Merge requests] are currently live. \n\nNo specific outcomes or statuses were logged for these items within the period.\n",
+   "keep": [
+    "Progress continued on Anil-matcha/awesome-generative-ai-apps"
+   ],
+   "drop": [
+    "[Merge requests]",
+    "No specific outcomes"
+   ]
+  },
+  {
+   "id": "thin",
+   "out": "## Weekly Status Update - Nov 2 - Nov 6\n\nHere's a summary of activity:\n\n*   **Merge Requests:** Progress was made on Anil-matcha/awesome-generative-ai-apps.\n*   **External Systems:** Activity occurred with chrome.google.com.\n\n  *  [Merge Request] Anil-matcha/awesome-generative-ai-apps is currently open.\n",
+   "keep": [
+    "Progress was made"
+   ],
+   "drop": [
+    "[Merge Request]"
+   ]
+  },
+  {
+   "id": "eng",
+   "out": "## Weekly Status Update (Oct 27-Oct 31)\n\nHere’s a summary of activity for the week:\n\n**Key Accomplishments:**\n\n*   Completed the ENGX-162 postmortem and standup notes (4 of 5 days).\n*   Merged MR !412 for CSV export endpoint (ENGX-151).\n\n**Ongoing Tasks:**\n\n*   ENGX-151: CSV export for reports [In Review]. Documentation is complete.\n*   ENGX-158: Investigating login timeout on SSO. MR !419 to extend session refresh window is open.\n*   QA-77: Regression suite remains flaky on Safari [Open]. Paired with Sam to investigate.\n\n**Testing & Monitoring:**\n\n*   Testing completed on local app (localhost:3000) and staging.acme.io.\n*   Added Datadog API latency dashboard.\n\n**Next Week:**\n\n*   Ship CSV export to beta.\n*   Address QA-77.\n",
+   "keep": [
+    "Completed the ENGX-162 postmortem",
+    "Merged MR !412",
+    "ENGX-151: CSV export for reports [In Review]",
+    "MR !419 to extend session refresh window is open",
+    "Ship CSV export to beta",
+    "Address QA-77."
+   ],
+   "drop": [
+    "Documentation is complete",
+    "Testing completed",
+    "Added Datadog"
+   ]
+  },
+  {
+   "id": "eng",
+   "out": "## Weekly Status Update (Oct 27-Oct 31)\n\n*   **ENGX-151: CSV export for reports** [In Review]\n    *   MR !412 was merged, adding the endpoint.\n    *   CSV export spec is complete.\n*   **ENGX-158: Login timeout on SSO** [In Progress]\n    *   MR !419 is open to extend the session refresh window.\n*   **QA-77: Regression suite flaky on Safari** [Open]\n*   **Data and monitoring:** Datadog API latency dashboard updated.\n*   Investigated memory spike in report worker.\n\n**Other:** Paired with Sam on flaky Safari tests. \n\n**Next Week:** Ship CSV export to beta, and fix QA-77.\n",
+   "keep": [
+    "MR !412 was merged",
+    "MR !419 is open",
+    "[In Progress]",
+    "Investigated memory spike"
+   ],
+   "drop": [
+    "spec is complete",
+    "dashboard updated"
+   ]
+  },
+  {
+   "id": "eng",
+   "out": "## Weekly Status Update (Oct 27-Oct 31)\n*   **ENGX-162 Postmortem:** Completed.\n*   **Standup Notes:** Documented notes for 4 of 5 days.\n**Tickets:**\n*   **ENGX-151: CSV Export for Reports [In Review]:** MR !412 merged. Documentation for the spec is available.\n*   **ENGX-158: Login Timeout on SSO [In Progress]:** MR !419 opened to extend session refresh.\n**Testing:**\n*   Local app (localhost:3000) tested.\n*   Staging environment (staging.acme.io) tested.\n**Data & Monitoring:**\n*   Datadog API latency dashboard updated.\n**Next Week:**\n*   Ship CSV export to beta.\n*   Address QA-77 (carried over).\n",
+   "keep": [
+    "Completed.",
+    "MR !412 merged",
+    "MR !419 opened",
+    "Address QA-77 (carried over)"
+   ],
+   "drop": [
+    "dashboard updated"
+   ]
+  },
+  {
+   "id": "sales",
+   "out": "**Weekly Status Update - Oct 27-Oct 31**\n\nHere’s a summary of the week’s activities:\n\n* **Pipeline Movement:**\n    * Pipeline review call completed.\n    * Forecast call completed.\n\n* **Customer Engagement:**\n    * Calls held with Customer 1 (discovery).\n    * Demo call conducted with Customer 2.\n\n* **Account Focus:**\n    * Account engagements with Customer 1, Customer 2, and Customer 3.\n\n* **Additional Tasks:**\n    * Q4 pricing deck updated.\n",
+   "keep": [
+    "Calls held with Customer 1",
+    "Demo call conducted with Customer 2",
+    "Q4 pricing deck updated"
+   ],
+   "drop": [
+    "review call completed",
+    "Forecast call completed"
+   ]
+  },
+  {
+   "id": "sales",
+   "out": "## Weekly Status Update - Oct 27-Oct 31\n\nHere's a summary of my activities this week:\n\n*   Focused on key accounts: Customer 1, Customer 2, and Customer 3.\n*   Completed customer calls: Discovery call with Customer 1, pipeline review, demo with Customer 2, and a forecast call.\n*   Updated Q4 pricing deck.\n",
+   "keep": [
+    "Focused on key accounts",
+    "Updated Q4 pricing deck"
+   ],
+   "drop": [
+    "Completed customer calls",
+    "Here's a summary"
+   ]
+  },
+  {
+   "id": "standup",
+   "out": "## Daily Standup - Product Manager\n\n**Yesterday:**\n\n*   **Onboarding v2 PRD:** Progress on the PRD for Onboarding v2.\n*   **Figma: Onboarding flow:** Updated Figma design for the Onboarding flow.\n*   **Jira: PROD board:** Reviewed the PROD board in Jira. [PROD board - Open]\n\n**Today:**\n\n*   No specific tasks tracked for today.\n\n**Blockers:**\n\n*   None identified.\n",
+   "keep": [
+    "Progress on the PRD for Onboarding v2",
+    "Reviewed the PROD board",
+    "No specific tasks tracked",
+    "### Blockers\n- ",
+    "**Figma: Onboarding flow**"
+   ],
+   "drop": [
+    "Updated Figma",
+    "[PROD board - Open]",
+    "None identified"
+   ]
+  },
+  {
+   "id": "standup",
+   "out": "### Daily Standup - [Date]\n**Yesterday:**\n*   **Onboarding v2 PRD:** Progress made on onboarding v2 PRD.\n*   **Figma: Onboarding flow:** Updated onboarding flow in Figma.\n*   **Jira: PROD board:** Modified the PROD board in Jira. [live]\n**Today:**\n*   No specific tasks tracked.\n**Blockers:**\n*   None identified.\n",
+   "keep": [
+    "Progress made on onboarding v2 PRD"
+   ],
+   "drop": [
+    "[Date]",
+    "Updated onboarding flow",
+    "Modified the PROD board",
+    "[live]",
+    "None identified"
+   ]
+  }
+ ]
+}

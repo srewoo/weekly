@@ -1,0 +1,53 @@
+/* The side panel: a narrow sheet. Tabs on the head rule, tasks in the middle, tracking in the footer. */
+body { background: var(--sheet); height: 100vh; display: flex; flex-direction: column; }
+.phead { display: flex; justify-content: space-between; align-items: end; gap: 8px; padding: 10px 12px 0; border-bottom: 2px solid var(--ink); }
+.tabs { display: flex; gap: 2px; }
+.tabs button { border: 0; border-bottom: 5px solid transparent; border-radius: 0; color: var(--muted); padding: 6px 10px; margin-bottom: -2px; font-size: 14px; }
+.tabs button[aria-selected="true"] { color: var(--ink); font-weight: 700; border-bottom-color: var(--marker); background: var(--marker-wash); }
+.hlinks { display: flex; gap: 2px; margin-bottom: 4px; flex-shrink: 0; }
+.hlinks button { font-size: 14px; padding: 4px 6px; min-height: 32px; }
+.applinks { display: flex; flex-wrap: wrap; align-items: center; gap: 2px; padding: 4px 12px; font-size: 14px; color: var(--muted); border-bottom: 1px solid var(--rule); }
+.applinks button { font-size: 14px; padding: 4px 4px; min-height: 32px; }
+.phead { gap: 4px; padding-inline: 8px; }
+.tabs button { padding: 6px 6px; }
+.phead { padding-inline: 6px; }
+.cap { display: grid; gap: 6px; }
+.cap .row { flex-wrap: nowrap; }
+.cap input { flex: 1; min-width: 0; }
+.link { padding: 0; border: 0; background: none; text-decoration: underline; font-size: 14px; }
+.pbody { flex: 1; padding: 12px; overflow-y: auto; }
+.pbody section { display: grid; gap: 12px; align-content: start; }
+.pfoot { border-top: 1px solid var(--rule); padding: 8px 12px 8px; display: grid; gap: 4px; background: var(--paper); }
+.trow { display: flex; align-items: baseline; gap: 8px; }
+.trow .label { color: var(--muted); font-size: 14px; }
+.total { flex: 1; font: 600 22px/1 var(--serif); font-variant-numeric: tabular-nums; }
+.nowrow { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.now { flex: 1; min-width: 0; margin: 0; color: var(--muted); font-size: 14px; overflow: hidden; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.pfoot.off .trow { display: none; }
+.pfoot .more > summary, .pfoot #noteOnPage { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; padding: 4px 6px; border: 1px solid transparent; border-radius: 4px; color: var(--navy); font: 600 14px var(--sans); cursor: pointer; }
+.pfoot .more > summary:hover, .pfoot #noteOnPage:hover { text-decoration: underline; }
+.more summary span { font-weight: 700; }
+.more[open] summary { margin-bottom: 2px; }
+.more p { margin: 4px 0 0; }
+.err { margin: 0; font-size: 14px; color: var(--danger); display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.keys { margin: 0; color: var(--muted); font-size: 14px; }
+.hero { font-size: 15px; padding: 10px 12px; }
+.msg { margin: 0; color: var(--muted); font-size: 14px; }
+.msg:empty { display: none; }
+.pfoot .privacy { text-align: left; font-size: 14px; }
+.empty { display: grid; gap: 10px; font-size: 14px; }
+.empty p { margin: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+.preview summary { cursor: pointer; margin-top: 4px; }
+.preview pre { margin: 4px 0 0; padding: 8px; max-height: 40vh; overflow: auto; white-space: pre-wrap; background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; font: 14px/1.4 var(--sans, inherit); }
+.top .none { list-style: none; margin-left: -18px; color: var(--muted); }
+.wdays { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--rule); border-radius: 4px; }
+.wday { padding: 6px; border-right: 1px solid var(--rule); min-width: 0; }
+.wday:last-child { border-right: 0; }
+.wday.today { box-shadow: inset 0 3px 0 var(--navy); }
+.wday .name { color: var(--muted); font-size: 14px; }
+.wday .hrs { font: 600 15px/1.2 var(--serif); font-variant-numeric: tabular-nums; }
+.stat { margin: 0; font: 600 16px/1.3 var(--serif); }
+.stat .mark { font-variant-numeric: tabular-nums; }
+.top { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 14px; }
+.top li span { color: var(--muted); float: right; padding-left: 8px; font-variant-numeric: tabular-nums; }

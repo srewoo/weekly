@@ -1,0 +1,27 @@
+{
+  "name": "weekly",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension that turns the work you do in Chrome into your weekly update or standup.",
+  "scripts": {
+    "test": "npm run test:ny && npm run test:in",
+    "test:ny": "TZ=America/New_York node --test \"test/**/*.test.js\"",
+    "test:in": "TZ=Asia/Kolkata node --test \"test/**/*.test.js\"",
+    "typecheck": "tsc -p jsconfig.json",
+    "e2e": "node test/e2e/run.mjs",
+    "e2e:zip": "node test/e2e/run.mjs --zip",
+    "build": "node scripts/build.mjs",
+    "zip": "npm run build && node scripts/zip.mjs",
+    "package": "npm test && npm run typecheck && npm run zip",
+    "parity": "node scripts/parity.mjs",
+    "release:check": "npm run package && npm run e2e:zip && npm run parity"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

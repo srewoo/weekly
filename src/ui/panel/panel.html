@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><script src="../components/theme-boot.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly</title>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../components/tasks.css"><link rel="stylesheet" href="../components/notes.css"><link rel="stylesheet" href="panel.css"></head>
+<body>
+<header class="phead">
+  <nav id="tabs" class="tabs" role="tablist" aria-label="Side panel"></nav>
+  <div class="hlinks">
+    <button id="openSettings" class="quiet" aria-label="Open settings" title="Open settings">Settings</button>
+  </div>
+</header>
+<nav id="appLinks" class="applinks" aria-label="Open in the full app"></nav>
+<main id="tabPanels" class="pbody"></main>
+<footer id="pfoot" class="pfoot">
+  <div id="err" class="err" role="alert" hidden><span id="errText"></span> <button id="errAct" type="button" hidden>Open data settings</button></div>
+  <div class="trow">
+    <span class="label">Tracked today</span>
+    <span id="todayTotal" class="total">0m</span>
+    <button id="pause"></button>
+  </div>
+  <div class="nowrow"><p id="now" class="now"></p><button id="trackOn" type="button" hidden>Turn on</button></div>
+  <div class="nowrow"><button id="noteOnPage" type="button" class="quiet">Note on this page · Alt+N</button></div>
+  <p id="noteMsg" class="msg" role="status"></p>
+  <details class="more"><summary class="quiet"><span aria-hidden="true">?</span> Shortcuts &amp; privacy</summary>
+    <p id="keys" class="keys">N new task</p>
+    <p class="keys"><button id="openSettings2" type="button" class="quiet link" aria-label="Open settings">Settings</button></p>
+    <p class="privacy">Stays on this computer. Records tab addresses and titles only.</p>
+  </details>
+</footer>
+<script type="module" src="panel.js"></script>
+</body></html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en"><head><script src="../components/theme-boot.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly settings</title>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="settings.css"></head>
+<body>
+<header class="gnav">
+  <a class="brand" href="../report/report.html">Weekly</a>
+  <nav id="mainNav" class="mainnav" aria-label="Weekly"></nav>
+</header>
+<header class="top">
+  <h1>Settings</h1>
+  <p class="sub">Changes save as you make them.</p>
+</header>
+
+<div class="layout">
+<nav class="jump" aria-label="On this page">
+  <a href="#tracking">Tracking</a><a href="#reminders">Reminders</a><a href="#privacy">Privacy</a><a href="#integrations">Integrations</a>
+  <a href="#data">Your data</a><a href="#appearance">Appearance</a><a href="#advanced">Advanced</a>
+</nav>
+<main>
+  <section id="tracking" class="sec" aria-labelledby="trackingTitle">
+    <h2 id="trackingTitle">Tracking</h2>
+    <label class="check"><input type="checkbox" id="trackingOn"> Track my week: note the tab in front while I work (Chrome asks once)</label>
+    <p id="trackingMsg" class="msg" role="status"></p>
+    <label class="check"><input type="checkbox" id="trackAway" data-save> Count time I’m working outside Chrome (IDE, terminal, desktop apps) as “Outside Chrome”. Only the minutes, never which app.</label>
+    <h3>Sites</h3>
+    <label>Never track these sites (one per line)
+      <textarea id="ignoreDomains" data-save rows="3" placeholder="youtube.com&#10;netflix.com"></textarea></label>
+    <details class="adv">
+      <summary>Advanced: timing, custom rules and ticket prefixes</summary>
+      <label>Pause when I’m away for (seconds)
+        <input id="idleSeconds" data-save type="number" min="15" step="15"></label>
+      <label>Hide visits shorter than (minutes)
+        <input id="minMinutes" data-save type="number" min="0" step="1"></label>
+      <label>Your own rules, one per line: <code>site or path =&gt; Category | Label</code>
+        <textarea id="rules" data-save rows="3" placeholder="acme.my.site.com/partners => Sales & CRM | Partner portal&#10;intranet.acme.com => Docs & specs"></textarea></label>
+      <label>Ticket prefixes to recognise (optional, comma separated)
+        <input id="ticketPrefixes" data-save type="text" placeholder="ENGX, QA, MKT"></label>
+      <p class="hint">Rules apply to every week, including past ones. Prefixes apply to activity recorded from now on.</p>
+    </details>
+  </section>
+
+  <section id="reminders" class="sec" aria-labelledby="remindersTitle">
+    <h2 id="remindersTitle">Reminders</h2>
+    <div class="slot">
+      <label class="check"><input type="checkbox" id="morningOn" data-save> Morning brief: what’s due today and what’s carried over</label>
+      <input id="morningTime" data-save type="time" aria-label="Morning brief time">
+    </div>
+    <div class="slot">
+      <label class="check"><input type="checkbox" id="eveningOn" data-save> Evening check: what’s still open, to move to tomorrow</label>
+      <input id="eveningTime" data-save type="time" aria-label="Evening check time">
+    </div>
+    <div id="remindDays" data-save class="wd-pick" role="group" aria-label="Working days">
+      <label class="check"><input type="checkbox" value="1"> Mon</label>
+      <label class="check"><input type="checkbox" value="2"> Tue</label>
+      <label class="check"><input type="checkbox" value="3"> Wed</label>
+      <label class="check"><input type="checkbox" value="4"> Thu</label>
+      <label class="check"><input type="checkbox" value="5"> Fri</label>
+      <label class="check"><input type="checkbox" value="6"> Sat</label>
+      <label class="check"><input type="checkbox" value="0"> Sun</label>
+    </div>
+    <p id="reminderErr" class="msg err" role="alert"></p>
+    <label class="check"><input type="checkbox" id="systemNotification" data-save> Show a system notification (it reaches you when Chrome isn’t in front)</label>
+    <label class="check"><input type="checkbox" id="reminderWindow" data-save> Also open the reminder window. Off: just the notification; click it to open the window.</label>
+    <label class="check"><input type="checkbox" id="catchUpOnStartup" data-save> Show a missed reminder when Chrome starts</label>
+    <div class="row">
+      <button id="previewMorning" type="button">Preview the brief</button>
+      <button id="previewEvening" type="button">Preview the check</button>
+    </div>
+    <p class="hint">The evening check on your last working day also links to your weekly update. Until you add a task, the evening check comes only on that day.</p>
+  </section>
+
+  <section id="privacy" class="sec" aria-labelledby="privacyTitle">
+    <h2 id="privacyTitle">Privacy</h2>
+    <label class="check"><input type="checkbox" id="hideNames" data-save> Hide people and customer names in updates (applies to tracked CRM, HR and support items)</label>
+    <h3>Notes PIN</h3>
+    <p id="pinState" class="hint"></p>
+    <label>Current PIN <input id="pinCurrent" type="password" inputmode="numeric" autocomplete="off" maxlength="8"></label>
+    <label>New PIN (4 to 8 digits) <input id="pinNew" type="password" inputmode="numeric" autocomplete="off" maxlength="8"></label>
+    <div class="row">
+      <button id="pinSet" type="button">Set PIN</button>
+      <button id="pinChange" type="button">Change PIN</button>
+      <button id="pinRemove" type="button" class="danger">Remove PIN</button>
+    </div>
+    <p id="pinMsg" class="msg" role="status"></p>
+    <p class="hint">Private notes are encrypted on this computer with your PIN. A forgotten PIN cannot be recovered.</p>
+    <details class="adv">
+      <summary>How private notes are protected</summary>
+      <p class="hint">Weekly never stores the PIN. Five wrong tries pause unlocking for 30 seconds, then longer. Removing the PIN turns private notes back into ordinary ones. If you export your data, use 6 to 8 digits: an export holds the PIN check value, and a 4-digit PIN can be guessed from a copy of the file.</p>
+    </details>
+  </section>
+
+  <section id="integrations" class="sec" aria-labelledby="integrationsTitle">
+    <h2 id="integrationsTitle">Integrations</h2>
+    <label>Slack incoming webhook (only needed for “Post to Slack”)
+      <input id="slackWebhook" data-save type="text" placeholder="https://hooks.slack.com/services/..." aria-describedby="slackWebhookErr"></label>
+    <p id="slackWebhookErr" class="msg err" role="alert"></p>
+    <p class="hint">Adds a Post to Slack button to your update. “Copy as → Slack” works without it. The webhook stays on this computer and is never exported.</p>
+  </section>
+
+  <section id="data" class="sec" aria-labelledby="dataTitle">
+    <h2 id="dataTitle">Your data</h2>
+    <p class="hint">Weekly keeps your data only in this Chrome profile. There is no sync, so an export is your backup.</p>
+    <div class="row">
+      <button id="export">Export</button>
+      <span id="lastBackup" class="hint"></span>
+    </div>
+    <p id="exportPinHint" class="hint" hidden>Your PIN is set, so an export also holds what checks it: use a PIN of 6 to 8 digits.</p>
+    <p class="hint">An export holds your tasks, notes, settings and activity. Private notes stay encrypted, but the file is enough to try PINs against. Keep export files private.</p>
+    <div class="row">
+      <button id="importBtn">Import a backup</button>
+      <input id="import" type="file" accept="application/json,.json" hidden>
+    </div>
+    <p class="hint">Import takes a Weekly export from this or another computer, a Daybook backup or a ForgetMeNot export.</p>
+    <div id="importPanel" class="import" hidden>
+      <p id="importWhat"></p>
+      <div role="radiogroup" aria-label="How to import">
+        <label class="check"><input type="radio" name="importMode" value="merge" checked> Add what’s new to what’s here</label>
+        <label class="check"><input type="radio" name="importMode" value="replace"> <span id="replaceLabel">Replace mine with the file’s</span></label>
+      </div>
+      <div id="importPins" hidden>
+        <label>PIN the file’s private notes were locked with
+          <input id="importPin" type="password" inputmode="numeric" autocomplete="off" maxlength="8"></label>
+        <div id="importMine" hidden>
+          <label>Your PIN (not needed for your own backup)
+            <input id="importLocalPin" type="password" inputmode="numeric" autocomplete="off" maxlength="8"></label>
+          <div role="radiogroup" aria-label="Which PIN to keep">
+            <label class="check"><input type="radio" name="importKeep" value="mine" checked> Keep my PIN for all private notes</label>
+            <label class="check"><input type="radio" name="importKeep" value="theirs"> Use the file’s PIN for all private notes</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button id="importGo" type="button">Import</button>
+        <button id="importCancel" type="button" class="quiet">Cancel</button>
+      </div>
+    </div>
+    <h3>Chrome history</h3>
+    <div class="row">
+      <button id="histFill">Fill last 15 days from history</button>
+      <button id="histRemove" class="quiet">Remove history estimates</button>
+    </div>
+    <h3>Delete</h3>
+    <div class="row"><button id="clear" class="danger">Delete everything</button></div>
+    <div id="clearConfirm" class="import" role="alertdialog" aria-labelledby="clearAsk" hidden>
+      <p id="clearAsk">Delete all tracked activity, notes, drafts, tasks and imported devices? Settings are kept. This can’t be undone.</p>
+      <div class="row">
+        <button id="clearYes" type="button" class="danger">Yes, delete everything</button>
+        <button id="clearNo" type="button">Cancel</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="appearance" class="sec" aria-labelledby="appearanceTitle">
+    <h2 id="appearanceTitle">Appearance</h2>
+    <label>Theme
+      <select id="theme">
+        <option value="system">Same as this computer</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select></label>
+    <p class="hint">Changes every Weekly page, and the note you open on a web page, straight away.</p>
+  </section>
+
+  <section id="advanced" class="sec" aria-labelledby="advancedTitle">
+    <h2 id="advancedTitle">Advanced</h2>
+    <label class="check"><input type="checkbox" id="showStats" data-save> Show Stats and Trends (streaks, a year of days, 8-week time chart)</label>
+    <p class="hint">Off by default: Weekly is for your update first. The Stats link shows in the header straight away.</p>
+    <label>Wording style for on-device AI polish
+      <select id="role" data-save>
+        <option value="general">General</option>
+        <option value="engineering">Engineering / QA</option>
+        <option value="product">Product management</option>
+        <option value="sales">Sales</option>
+        <option value="hr">HR / Recruiting</option>
+        <option value="marketing">SEO / Marketing</option>
+        <option value="support">Customer support</option>
+      </select></label>
+  </section>
+</main>
+</div>
+
+<p id="settingsMsg" class="msg toast" role="status"></p>
+<script type="module" src="settings.js"></script>
+</body></html>

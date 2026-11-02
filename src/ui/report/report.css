@@ -1,0 +1,114 @@
+.top { display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: end;
+  padding: 28px clamp(16px, 4vw, 48px) 18px; border-bottom: 2px solid var(--ink); background: var(--sheet); }
+h1 { font: 600 clamp(26px, 3.4vw, 38px)/1.1 var(--serif); margin: 0; letter-spacing: -0.01em; }
+h2 { font: 600 18px/1.25 var(--serif); margin: 0 0 10px; }
+h3 { font: 600 16px/1.3 var(--serif); margin: 0; }
+.sub { margin: 6px 0 0; color: var(--muted); font-variant-numeric: tabular-nums; }
+.weeknav { display: flex; flex-wrap: wrap; gap: 6px; }
+main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 420px); gap: 36px;
+  padding: 24px clamp(16px, 4vw, 48px) 60px; max-width: 1400px; }
+/* Narrow: the draft and its Copy button come before the long activity checklist. */
+@media (max-width: 900px) { main { grid-template-columns: 1fr; } .side { order: -1; } }
+code { font: 13px var(--mono); }
+.hint { color: var(--muted); font-size: 14px; margin: 10px 0 18px; }
+.privacy { margin: 28px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); }
+
+/* The week: a timesheet row, hours drawn as highlighter strokes */
+.days { display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--rule); border-radius: 4px; background: var(--sheet); overflow: hidden; }
+.day { padding: 10px 10px 12px; border-right: 1px solid var(--rule); min-width: 0; }
+.day:last-child { border-right: 0; }
+.day.today { box-shadow: inset 0 3px 0 var(--navy); }
+.day .name { color: var(--muted); font-size: 13px; }
+.day .hrs { font: 600 24px/1.15 var(--serif); margin: 2px 0 8px; font-variant-numeric: tabular-nums; }
+.stroke { height: 10px; border-radius: 2px 6px 3px 7px; background: var(--marker); transform: rotate(-0.4deg); }
+.day.est .hrs { color: var(--muted); font-style: italic; }
+.day.est .stroke { background: repeating-linear-gradient(-45deg, var(--marker) 0 3px, var(--marker-wash) 3px 6px); }
+@media (max-width: 480px) { .day { padding: 8px 6px 10px; } .day .hrs { font-size: 18px; } }
+
+/* Notices sit on a highlighter wash, not in a card */
+.connect { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;
+  background: var(--marker-wash); border-radius: 4px; padding: 10px 12px; margin-bottom: 18px; font-size: 14px; }
+
+/* Categories: ledger headings with a heavy rule */
+.cat { margin-bottom: 26px; }
+.cat-head { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 4px; }
+.cat-head span { color: var(--muted); font-variant-numeric: tabular-nums; }
+.item { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; align-items: baseline;
+  padding: 7px 0; border-bottom: 1px solid var(--rule); }
+.item.off .task { color: var(--muted); text-decoration: line-through; }
+.task { overflow-wrap: anywhere; }
+.meta { color: var(--muted); font-size: 14px; white-space: nowrap; text-align: right; font-variant-numeric: tabular-nums; }
+.dots { display: inline-flex; gap: 3px; margin-left: 8px; vertical-align: middle; }
+.dots i { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--rule-strong); }
+.dots i.on { background: var(--navy); border-color: var(--navy); }
+.chip { font-size: 13px; color: var(--muted); border: 1px solid var(--rule-strong); border-radius: 3px; padding: 0 5px; margin-left: 6px; }
+.chip.status { color: var(--ink); font-weight: 600; }
+.empty { border-top: 2px solid var(--ink); padding: 18px 0; color: var(--muted); }
+.empty strong { color: var(--ink); display: block; font: 600 16px/1.3 var(--serif); margin-bottom: 4px; }
+
+/* Sidebar: the draft is the one card; everything else is a ruled section */
+.side { display: grid; gap: 28px; align-content: start; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 16px; }
+.plain { border-top: 2px solid var(--ink); padding-top: 10px; }
+details.plain summary { font: 600 16px/1.3 var(--serif); cursor: pointer; padding: 2px 0; }
+details.plain[open] summary { margin-bottom: 8px; }
+.check { display: flex; gap: 6px; align-items: center; font-size: 14px; color: var(--muted); }
+.draft-opts { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: center; margin: 8px 0 0; }
+#anonHint { margin: 2px 0 10px; }
+#md { font: 13px/1.55 var(--mono); resize: vertical; background: var(--paper); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; align-items: center; }
+.row input[type=text] { flex: 1; min-width: 160px; }
+.msg { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+.msg:empty { display: none; }
+.ai { margin-top: 14px; padding-top: 10px; border-top: 1px dashed var(--rule); }
+.notes { list-style: none; padding: 0; margin: 10px 0 0; }
+.notes li { display: flex; gap: 8px; justify-content: space-between; align-items: center; padding: 4px 0; border-bottom: 1px solid var(--rule); }
+.notes li small { color: var(--muted); margin-right: 6px; }
+.notes li.off span { color: var(--muted); text-decoration: line-through; }
+.notes li > span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.copy-row { margin: 0 0 8px; }
+
+.trends { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 13px; font-variant-numeric: tabular-nums; }
+.trends th { text-align: left; color: var(--muted); font-weight: 400; padding: 4px 6px 4px 0; }
+.trends td { padding: 5px 6px 5px 0; border-top: 1px solid var(--rule); white-space: nowrap; }
+.trends td.bars { width: 50%; }
+.trends .bars i { display: block; height: 6px; border-radius: 2px; margin: 2px 0; }
+.focus { background: var(--navy); }
+.meet { background: var(--marker); }
+.away { background: var(--rule-strong); }
+i.key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin: 0 4px 0 8px; vertical-align: -1px; }
+.copy-row .copy-as { font-size: 14px; color: var(--muted); }
+.copy-row select { max-width: 100%; }
+
+a.btn { display: inline-block; padding: 5px 12px; border: 1px solid var(--rule-strong); border-radius: 4px; font-weight: 600; }
+a.btn.primary { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+a.btn:hover { text-decoration: none; }
+/* Tracking off: the Notes box is how work gets in, so it leads the side column. */
+.plain.prominent { order: -1; background: var(--marker-wash); border-top-color: var(--marker); border-radius: 4px; padding: 12px; }
+.plain.prominent .hint { color: var(--ink); }
+#backupNudge { margin: 18px 0 0; }
+
+/* Draft: rendered preview by default, Markdown on Edit */
+.view-toggle { display: inline-flex; margin-bottom: 8px; }
+.view-toggle button { border-radius: 0; }
+.view-toggle button:first-child { border-radius: 4px 0 0 4px; }
+.view-toggle button:last-child { border-radius: 0 4px 4px 0; margin-left: -1px; }
+.view-toggle button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--on-navy); }
+.preview { background: var(--paper); border: 1px solid var(--rule); border-radius: 4px; padding: 12px 16px; line-height: 1.5; overflow-wrap: anywhere; }
+.preview h3 { font: 600 18px/1.3 var(--serif); margin: 0 0 8px; }
+.preview h4 { font: 600 15px/1.3 var(--serif); margin: 16px 0 4px; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+.preview h5 { font: 600 14px/1.3 var(--serif); margin: 12px 0 2px; }
+.preview p { margin: 6px 0; }
+.preview ul { margin: 2px 0; padding-left: 20px; }
+.preview li { margin: 2px 0; }
+.preview .tag { font-size: 13px; font-weight: 600; background: var(--marker-wash); border-radius: 3px; padding: 0 5px; white-space: nowrap; }
+.empty-draft { color: var(--muted); }
+.ask { margin-top: 10px; padding: 10px 12px; background: var(--marker-wash); border-radius: 4px; font-size: 14px; }
+.ask p { margin: 0; }
+.notes .delete { color: var(--muted); border-color: transparent; font-size: 13px; }
+.notes .delete:hover, .notes .delete:focus-visible { color: var(--danger); }
+.empty.first .row { margin: 10px 0; }
+.empty.first p { margin: 6px 0; }
+
+.task .move { margin-left: 8px; font-size: 13px; padding: 1px 4px; }
+button.link { background: none; border: 0; padding: 0; color: var(--navy); text-decoration: underline; cursor: pointer; font: inherit; }

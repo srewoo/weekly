@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><script src="../components/theme-boot.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to Weekly</title>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="welcome.css"></head>
+<body>
+<main class="welcome">
+  <p class="kicker">Weekly</p>
+  <h1>Your week, <span class="mark">written up</span> for you.</h1>
+  <p class="lede">Weekly turns the tickets, merge requests and docs you worked on into a ready-to-send weekly update or standup, grouped for you. You read it, untick anything private, and copy it. It also keeps your tasks and notes.</p>
+
+  <section class="facts" aria-label="Privacy">
+    <div>
+      <h2>What tracking records</h2>
+      <ul>
+        <li>The address and title of the tab you’re looking at, and for how long</li>
+        <li>Only while Chrome is in front and you’re at the keyboard</li>
+      </ul>
+    </div>
+    <div>
+      <h2>What it never does</h2>
+      <ul>
+        <li>Read what’s on a page, your keystrokes, or take screenshots</li>
+        <li>Send anything anywhere. It stays on this computer until you copy or post it</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="trackStep" class="step">
+    <h2>Track my week?</h2>
+    <p>Weekly notes which tab is in front, so your update starts itself. Chrome will call this “read your browsing history”. Say no and nothing is recorded.</p>
+    <div class="choice">
+      <button id="trackYes">Yes, track my week</button>
+      <button id="trackNo" class="quiet">No thanks</button>
+    </div>
+    <p id="trackMsg" class="msg" role="status"></p>
+    <div id="fillStep" hidden>
+      <p>Want a head start? Weekly can rebuild your last 15 days from Chrome’s history, so your first update isn’t empty. Times are estimates, marked with ~. Chrome will ask you to allow this.</p>
+      <button id="fill" class="quiet">Fill in from my Chrome history</button>
+      <p id="fillMsg" class="msg" role="status"></p>
+    </div>
+  </section>
+
+  <section class="step">
+    <h2>See what you get</h2>
+    <div class="choice">
+      <a id="sample" class="btn primary" href="../report/report.html?sample=1">See a sample update</a>
+      <button id="panel">Open the side panel</button>
+      <a id="done" class="textlink" href="../report/report.html">Go to my update</a>
+    </div>
+    <p id="panelMsg" class="msg" role="status"></p>
+    <ul class="keys" aria-label="Keyboard shortcuts">
+      <li><kbd id="k-open-panel">Alt+T</kbd> side panel</li>
+      <li><kbd id="k-open-note">Alt+N</kbd> note on any page</li>
+      <li><kbd id="k-open-app">Alt+Shift+T</kbd> full app</li>
+    </ul>
+    <p class="hint">Morning and evening reminders are on; change them in <a href="../settings/settings.html">Settings</a>.</p>
+  </section>
+</main>
+<script type="module" src="welcome.js"></script>
+</body></html>

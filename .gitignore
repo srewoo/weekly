@@ -1,0 +1,34 @@
+# Build output: regenerate with `npm run package`
+dist/
+*.zip
+
+# Generated launch videos (/brag): large renders, narration and music copies
+brag-output*/
+
+# Dependencies and tool caches
+node_modules/
+.hyperframes/
+.npm/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local environment (never commit secrets, e.g. a Slack webhook used for testing)
+.env
+.env.*
+dist/
+brag-output/
+store-assets/
+
+# Agent workspaces
+.superpowers/
+.e2e/

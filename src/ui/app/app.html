@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en"><head><script src="../components/theme-boot.js"></script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly</title>
+<link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../components/tasks.css"><link rel="stylesheet" href="../components/notes.css"><link rel="stylesheet" href="app.css"></head>
+<body>
+<header class="gnav">
+  <a class="brand" href="../report/report.html">Weekly</a>
+  <nav id="mainNav" class="mainnav" aria-label="Weekly"></nav>
+</header>
+<header class="top">
+  <h1 id="viewTitle">Calendar</h1>
+  <p id="viewSub" class="sub"></p>
+</header>
+
+<main>
+  <section id="view-calendar" class="view" aria-labelledby="calTitle">
+    <div class="cal-head">
+      <h2 id="calTitle"></h2>
+      <div class="cal-nav">
+        <button id="prevMonth" aria-label="Previous month">←</button>
+        <button id="todayBtn">Today</button>
+        <button id="nextMonth" aria-label="Next month">→</button>
+      </div>
+    </div>
+    <div class="cal-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+    <div id="calGrid" class="cal-grid" role="group" aria-label="Days of the month, Monday first"></div>
+    <p id="calEmpty" class="hint" hidden>Nothing planned yet. Click any day to add daily or one-off tasks, or quick-add one from Tasks.</p>
+    <p class="hint">Shading shows how much of each day’s tasks got done. ← → change month, T jumps to today.</p>
+  </section>
+
+  <section id="view-tasks" class="view" aria-label="Tasks" hidden>
+    <nav id="taskViews" class="tviews" aria-label="Task views"></nav>
+    <div class="tmain">
+      <form id="taskAdd" class="addrow">
+        <input id="taskTitle" type="text" maxlength="200" placeholder="Add a task… try “Call Sam tomorrow !high”" title="Add a task ( N )" aria-label="New task" aria-describedby="taskHint">
+        <button class="primary">Add</button>
+      </form>
+      <p id="taskHint"></p>
+      <div class="tools">
+        <input id="q" type="search" placeholder="Search tasks" aria-label="Search tasks" title="Search tasks ( / )" autocomplete="off">
+        <select id="pfilter" aria-label="Filter by priority">
+          <option value="all">All priorities</option>
+          <option value="high">High only</option>
+          <option value="medium">Medium only</option>
+          <option value="low">Low only</option>
+        </select>
+      </div>
+      <div id="taskList"></div>
+    </div>
+  </section>
+
+  <section id="view-notes" class="view notes-view" aria-label="Notes" hidden>
+    <div id="notesHost" class="notes-main"></div>
+    <aside id="insights" class="insights" aria-label="Notes in the last 7 days"></aside>
+  </section>
+
+  <section id="view-stats" class="view" aria-labelledby="statsTitle" hidden>
+    <h2 id="statsTitle" class="vh">Stats</h2>
+    <div id="statFigures" class="figures"></div>
+    <h3>The last 365 days</h3>
+    <div class="hm-scroll">
+      <div id="hmMonths" class="hm-months" aria-hidden="true"></div>
+      <div id="heatmap" class="heatmap" role="img" aria-label="A year of days, shaded by how much of each got done"></div>
+    </div>
+    <p class="hint">Each square is a day, shaded like the calendar. Blank squares had nothing on them.</p>
+    <h3>By weekday</h3>
+    <div id="weekdayBars" class="wd-bars"></div>
+    <p id="weekdayNote" class="hint"></p>
+    <h3>Daily tasks</h3>
+    <p class="hint">How often each one was ticked on the days it was due, over the last year.</p>
+    <ul id="dailyRates" class="rows rates"></ul>
+    <details id="stoppedWrap" class="stopped" hidden>
+      <summary>Stopped daily tasks (<span id="stoppedCount">0</span>)</summary>
+      <p class="hint">They no longer appear on new days. Their past ticks still count in the calendar and here.</p>
+      <ul id="stoppedList" class="rows rates"></ul>
+    </details>
+  </section>
+</main>
+
+<dialog id="daySheet" aria-labelledby="sheetTitle">
+  <div class="dlg-head">
+    <div><h2 id="sheetTitle"></h2><p id="sheetSub" class="sub"></p></div>
+    <button id="sheetClose" class="quiet" aria-label="Close">✕</button>
+  </div>
+  <div class="progress"><i id="sheetBar"></i></div>
+  <h3>Daily tasks</h3>
+  <ul id="sheetDaily" class="rows"></ul>
+  <form id="dailyForm" class="addrow">
+    <input id="dailyTitle" type="text" maxlength="200" placeholder="Add a daily task…" aria-label="New daily task">
+    <select id="dailyDays" aria-label="Repeats on">
+      <option value="weekdays">Weekdays</option>
+      <option value="every">Every day</option>
+      <option value="custom">Custom days…</option>
+    </select>
+    <button>Add</button>
+    <fieldset id="dailyCustom" class="days" hidden>
+      <legend>Repeat on</legend>
+      <label><input type="checkbox" value="1">Mon</label><label><input type="checkbox" value="2">Tue</label>
+      <label><input type="checkbox" value="3">Wed</label><label><input type="checkbox" value="4">Thu</label>
+      <label><input type="checkbox" value="5">Fri</label><label><input type="checkbox" value="6">Sat</label>
+      <label><input type="checkbox" value="0">Sun</label>
+    </fieldset>
+  </form>
+  <h3>Extra tasks for this day</h3>
+  <ul id="sheetExtras" class="rows"></ul>
+  <form id="extraForm" class="addrow">
+    <input id="extraTitle" type="text" maxlength="200" placeholder="Add a one-off task…" aria-label="New task for this day">
+    <button>Add</button>
+  </form>
+  <h3>Notes</h3>
+  <ul id="sheetNotes" class="notes"></ul>
+  <form id="noteForm" class="addrow">
+    <input id="dayNote" type="text" maxlength="1000" placeholder="What happened outside Chrome?" aria-label="Note for this day">
+    <button>Add</button>
+  </form>
+</dialog>
+
+<dialog id="editor" aria-labelledby="editorTitle">
+  <form id="editorForm" method="dialog">
+    <h2 id="editorTitle">Edit task</h2>
+    <label class="field">Title <input id="eTitle" type="text" maxlength="200" required></label>
+    <label class="field">Description <textarea id="eDesc" rows="4" maxlength="2000"></textarea></label>
+    <label class="field">Priority
+      <select id="ePriority"><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label>
+    <label class="field">Due date <input id="eDue" type="date"></label>
+    <fieldset id="eDays" class="days" hidden>
+      <legend>Repeats on</legend>
+      <label><input type="checkbox" value="1">Mon</label><label><input type="checkbox" value="2">Tue</label>
+      <label><input type="checkbox" value="3">Wed</label><label><input type="checkbox" value="4">Thu</label>
+      <label><input type="checkbox" value="5">Fri</label><label><input type="checkbox" value="6">Sat</label>
+      <label><input type="checkbox" value="0">Sun</label>
+    </fieldset>
+    <div class="dlg-foot">
+      <button id="eCancel" type="button" value="cancel">Cancel</button>
+      <button id="eSave" value="save" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+<script type="module" src="app.js"></script>
+</body></html>

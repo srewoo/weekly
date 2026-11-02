@@ -1,0 +1,66 @@
+/* Task rows, bands, the ⋯ menu, the toast and dialogs: shared by the side panel and the app tab.
+   Weekly's language: ledger rules, navy ink for actions, the yellow marker for "done". */
+.band { margin: 0 0 14px; }
+.band > h3, .band > summary { display: flex; gap: 8px; align-items: baseline; font: 600 15px/1.3 var(--serif);
+  border-bottom: 2px solid var(--ink); padding: 4px 0; margin: 0; }
+.band > summary { cursor: pointer; list-style: none; }
+.band > summary::-webkit-details-marker { display: none; }
+.band > summary::before { content: '▸'; color: var(--muted); font-size: 13px; }
+.band[open] > summary::before { content: '▾'; }
+.band-label { flex: 1; }
+.band-count { color: var(--muted); font: 13px var(--sans); font-variant-numeric: tabular-nums; }
+.band.flagged > h3, .band.flagged > summary { color: var(--danger); border-bottom-color: var(--danger); }
+.band h3 button { font: 600 14px var(--sans); min-height: 32px; padding: 4px 8px; }
+.none { color: var(--muted); font-size: 14px; margin: 8px 0; }
+
+.rows { list-style: none; margin: 0; padding: 0; }
+.row { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 8px; align-items: start;
+  padding: 5px 0 7px 6px; border-bottom: 1px solid var(--rule); border-left: 3px solid transparent; }
+.row.p-high { border-left-color: var(--danger); }
+.row.p-medium { border-left-color: var(--rule-strong); }
+.row input[type=checkbox] { margin-top: 2px; }
+.t-main { display: grid; min-width: 0; }
+.t-title { overflow-wrap: anywhere; }
+.t-meta { color: var(--muted); font-size: 14px; }
+.row.late .t-meta { color: var(--danger); }
+.pri-high { color: var(--danger); font-weight: 700; }
+.qa-hint { margin: 4px 0 8px; font-size: 14px; color: var(--muted); }
+.qa-hint:empty { display: none; }
+.qa-hint.parsed { color: var(--navy); font-weight: 600; }
+#dailyForm { flex-wrap: wrap; }
+.days { flex: 1 0 100%; display: flex; flex-wrap: wrap; gap: 4px 12px; border: 0; margin: 0; padding: 0; font-size: 13px; }
+.days legend { padding: 0; color: var(--muted); font-size: 13px; }
+.days label { display: inline-flex; align-items: center; gap: 4px; }
+.row.is-done .t-title { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--marker); text-decoration-thickness: 2px; }
+.row.daily .t-meta::before { content: '↻ '; }
+
+.more { position: relative; }
+.more > summary { list-style: none; cursor: pointer; display: grid; place-items: center; min-width: 32px; min-height: 32px; padding: 0 6px; border-radius: 4px; color: var(--navy); font-weight: 700; }
+.more > summary::-webkit-details-marker { display: none; }
+.more[open] > summary { background: var(--marker-wash); }
+.menu { position: absolute; right: 0; z-index: 5; display: grid; gap: 6px; min-width: 200px; padding: 10px;
+  background: var(--sheet); border: 1px solid var(--rule-strong); border-radius: 4px; box-shadow: 0 6px 18px rgb(0 0 0 / 0.12); }
+.menu label { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.menu button { justify-self: start; }
+
+.toast { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 20; display: flex; gap: 10px;
+  align-items: center; max-width: calc(100% - 24px); padding: 8px 12px; border-radius: 4px; background: var(--ink); color: var(--sheet); font-size: 13px; }
+.toast button { color: var(--marker); border-color: transparent; min-height: 26px; }
+
+.addrow { display: flex; gap: 6px; }
+.addrow input[type=text] { flex: 1; min-width: 0; }
+.msg { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+.msg:empty { display: none; }
+
+dialog { border: 1px solid var(--rule-strong); border-radius: 6px; background: var(--sheet); color: var(--ink);
+  padding: 18px; width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 48px); }
+dialog::backdrop { background: rgb(20 23 31 / 0.45); }
+dialog h2 { font: 600 22px/1.2 var(--serif); margin: 0; }
+dialog h3 { font: 600 14px/1.3 var(--serif); margin: 16px 0 4px; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+.dlg-head { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.dlg-foot { display: flex; gap: 8px; justify-content: end; margin-top: 14px; }
+
+/* Row actions sit back (muted ink, never dimmed by opacity) until the row is in use; touch devices and keyboard focus always see them in full. */
+@media (hover: hover) {
+  .row:not(:hover):not(:focus-within) .more > summary { color: var(--muted); }
+}

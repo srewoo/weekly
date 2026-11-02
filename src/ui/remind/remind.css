@@ -1,0 +1,15 @@
+/* The reminder window: a small popup. Header, the task bands, then a footer of actions. */
+body { min-height: 100vh; display: flex; flex-direction: column; background: var(--sheet); border-top: 3px solid var(--navy); }
+body.evening { border-top-color: var(--marker); }
+.rhead { padding: 16px 20px 10px; border-bottom: 1px solid var(--rule); }
+.eyebrow { margin: 0; font: 600 11px var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.rhead h1 { margin: 6px 0 2px; font: 400 24px/1.2 var(--serif); }
+.sub { margin: 0; color: var(--muted); font-size: 13px; }
+.rbody { flex: 1; overflow-y: auto; padding: 12px 20px; }
+.rbody .row { grid-template-columns: 18px minmax(0, 1fr) auto auto; }
+.allclear { margin: 8px 0; font: italic 16px/1.4 var(--serif); color: var(--muted); }
+.nudge { margin: 0; padding: 8px 20px; background: var(--marker-wash); color: var(--marker-ink); font-size: 13px; }
+.rfoot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 10px 20px; border-top: 1px solid var(--rule); background: var(--paper); }
+.spacer { flex: 1; }
+.nudge button { margin-inline-start: 8px; }
+.nudge.calm { background: var(--paper); color: var(--muted); border-top: 1px solid var(--rule); }

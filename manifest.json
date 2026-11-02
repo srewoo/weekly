@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Weekly",
+  "version": "3.0.0",
+  "description": "Your Friday update, drafted for you: a weekly report or standup from your tasks, notes and (optional) tabs. Stays on your computer.",
+  "permissions": ["storage", "unlimitedStorage", "idle", "alarms", "notifications", "sidePanel", "scripting", "activeTab"],
+  "optional_permissions": ["tabs", "history"],
+  "optional_host_permissions": ["https://*/*"],
+  "background": { "service_worker": "src/background/service-worker.js", "type": "module" },
+  "side_panel": { "default_path": "src/ui/panel/panel.html" },
+  "action": {
+    "default_title": "Weekly",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "commands": {
+    "open-panel": { "suggested_key": { "default": "Alt+T" }, "description": "Open the Weekly side panel" },
+    "open-app": { "suggested_key": { "default": "Alt+Shift+T" }, "description": "Open Weekly in a tab" },
+    "open-note": { "suggested_key": { "default": "Alt+N" }, "description": "Write a note on this page" }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'"
+  }
+}

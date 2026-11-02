@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "checkJs": true,
+    "strict": true,
+    "noEmit": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+  },
+  "include": ["src/lib/**/*.js", "src/background/**/*.js", "src/ui/components/**/*.js", "src/ui/panel/**/*.js", "src/ui/app/**/*.js", "src/ui/remind/**/*.js", "src/content/**/*.js"]
+}
