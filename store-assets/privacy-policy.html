@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekly privacy policy</title>
+<style>
+:root{--paper:#f6f4ee;--sheet:#fffdf8;--ink:#1c2333;--muted:#596071;--rule:#ddd8cb;--navy:#1f3a68;--marker:#f2cf45;
+--serif:Charter,"Bitstream Charter","Iowan Old Style","Sitka Text",Cambria,Georgia,serif;--sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 var(--sans)}
+main{max-width:720px;margin:0 auto;padding:48px 20px 80px}
+.kicker{font:600 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+h1{font:600 clamp(30px,5vw,42px)/1.1 var(--serif);margin:0 0 12px;letter-spacing:-.01em}
+.mark{background:linear-gradient(transparent 60%,var(--marker) 60%,var(--marker) 92%,transparent 92%)}
+h2{font:600 22px/1.2 var(--serif);margin:36px 0 10px;padding-top:14px;border-top:2px solid var(--ink)}
+p,li{max-width:66ch}li{margin:4px 0}
+.sum{background:var(--sheet);border:1px solid var(--rule);border-radius:4px;padding:14px 18px;margin:20px 0}
+.sum p{margin:0}
+table{border-collapse:collapse;width:100%;font-size:15px;background:var(--sheet)}
+th,td{border:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-family:var(--serif)}
+code{font:14px ui-monospace,Menlo,Consolas,monospace}
+.meta{color:var(--muted);font-size:14px}
+a{color:var(--navy)}
+</style></head>
+<body><main>
+<p class="kicker">Weekly</p>
+<h1>Privacy <span class="mark">policy</span></h1>
+<p class="meta">Applies to the Weekly Chrome extension, version 3.0.0. Last updated: 1 November 2026.</p>
+
+<div class="sum"><p><strong>In short:</strong> Weekly keeps your tasks, notes and reminders on your computer. Tracking is off until you turn it on; then Weekly also keeps a log of the address and title of the Chrome tab you are working in, and for how long, for 90 days. We run no servers and receive no data. Anything that leaves your computer does so only because you chose to copy, post, export or look something up.</p></div>
+
+<h2>What Weekly stores</h2>
+<ul>
+<li><strong>Tasks you add:</strong> title, description, priority, due date, and for a daily task the days it repeats and the days you ticked it.</li>
+<li><strong>Notes you write:</strong> title, text, category, and the day a note belongs to, if any.</li>
+<li><strong>Private notes:</strong> if you set a PIN and mark a note private, its title and text are encrypted on your computer before they are stored (its category and the day it belongs to stay readable beside them) (PBKDF2-SHA256 with 310,000 rounds, then AES-GCM). The PIN itself is never stored, only a random salt and a check value. The key exists only in the memory of Weekly's background process. It is dropped when you lock, after 5 minutes without use, or sooner when Chrome stops that process. After 5 wrong PINs Weekly makes you wait, from 30 seconds up to 15 minutes, before the next try.</li>
+<li><strong>Settings:</strong> your role, reminder times and working days, light or dark appearance, sites to ignore, your own rules, and an optional Slack webhook address. Also your saved draft edits, the items you untick, the day each reminder last showed, a random ID that tells exports from different computers apart, and small interface state: which day groups you left open, your answers to the share prompts, and the device IDs of files you imported.</li>
+<li><strong>If you turn tracking on:</strong> the address (URL), page title and time spent for the <strong>active tab of the focused Chrome window</strong>, only while Chrome is in front and you are active, and a per-day count of task switches. Time stops when you go idle (default 2 minutes) or lock your screen.</li>
+<li><strong>If you choose "Fill in from history":</strong> estimated time per page for the last 15 days, built from Chrome's visit history on this computer. History synced from your other devices is skipped.</li>
+</ul>
+
+<h2>What Weekly never collects</h2>
+<ul>
+<li>Page content, text you type into web pages, keystrokes, mouse activity or screenshots.</li>
+<li>Passwords, cookies or login tokens.</li>
+<li>Your name, email address or any account details. There is no account.</li>
+<li>Analytics, telemetry, crash reports or advertising identifiers. There are none.</li>
+</ul>
+<p><strong>The on-page note.</strong> When you press Alt+N, or "Note on this page" in the side panel, Weekly adds its small note panel to that one page, using Chrome's <code>activeTab</code> and <code>scripting</code> permissions. Alt+N works on any page Chrome allows. The side panel's button works only on sites you already allowed for live status; elsewhere it points you to Alt+N or the Notes tab. The panel shows and saves your own notes. It does not read the page, and it never shows private notes. Weekly runs nothing in web pages at any other time.</p>
+
+<h2>Tracking is your choice</h2>
+<p>Tracking is off until you turn it on, by choosing "Yes, track my week" on the welcome page, or by ticking "Track my week" in Settings. Turning it on asks Chrome for the <code>tabs</code> permission; Chrome's prompt calls this "Read your browsing history". Without it Weekly records no browsing at all and works as a task, notes and reminders app. Turning tracking off in Settings gives the permission back. If you update from Weekly 2 and Chrome dropped that permission, Weekly reopens the welcome page to ask again.</p>
+
+<h2>Where it is stored</h2>
+<p>In your browser's extension storage on your computer (<code>chrome.storage.local</code>), plus short-lived working state (for example the tab being timed, the last few minutes of timing and the reminder window's id) in session storage, which Chrome clears when the browser closes. One exception: the page's <code>localStorage</code> holds the name of your theme (light or dark), so a page can paint in the right colours before it loads. Nothing is synced through your Google account, nothing is stored on a server, and the developer has no access to it.</p>
+
+<h2>How long it is kept</h2>
+<p>Tracked activity, task-switch counts, history estimates, activity imported from another computer, saved draft edits and unticked items are deleted when they are more than <strong>90 days</strong> old. The check runs when Chrome starts and when Weekly is installed or updated. Tasks, notes, settings and the PIN record are kept until you delete them, or until you uninstall the extension.</p>
+
+<h2>When data leaves your computer</h2>
+<p>Never automatically. The only network features are optional, off until you use them, and each asks Chrome for permission first:</p>
+<table>
+<tr><th>Feature</th><th>What happens</th></tr>
+<tr><td>Live status for Jira, GitLab and GitHub</td><td>For ticket and merge request items, Weekly asks that site's own API for the ticket status or merge request state, using the login you already have in your browser (for example <code>https://your-company.atlassian.net/rest/api/2/issue/ABC-123</code>). Only the ticket or merge request identifier is sent, to the site you already use. The answer is shown on screen and not stored. Chrome asks before Weekly contacts a site, and only for the sites your items point to.</td></tr>
+<tr><td>Post to Slack</td><td>If you paste a Slack incoming webhook address in Settings and press "Post to Slack", the text of your draft is sent to <code>hooks.slack.com</code> after you confirm. Nothing is posted otherwise.</td></tr>
+<tr><td>Copy for ChatGPT or Claude</td><td>Only copies the draft and some instructions to your clipboard. Weekly does not contact those services. What you paste there is up to you and subject to their terms.</td></tr>
+<tr><td>Tidy up with Chrome AI</td><td>Uses the model built into Chrome (Gemini Nano), which runs on your computer. Your draft is not sent to us or to a server. Chrome may download the model the first time you use it.</td></tr>
+<tr><td>Fill in from Chrome history</td><td>Reads local history after you grant Chrome's history permission. No network use.</td></tr>
+</table>
+<p>We do not sell, rent or share your data, and we do not use it for advertising, credit decisions or anything outside Weekly's purpose: planning and recording your working week and drafting your update.</p>
+
+<h2>Export and import</h2>
+<p><strong>Export</strong> saves a file on your computer with your tasks, notes, settings and activity. Private notes stay encrypted in it. It holds the PIN record (the salt and check value), never the PIN, and never the Slack webhook. It also holds the random device ID. Keep export files private: with the check value, someone who has the file can try PINs on their own computer, so if you export private notes, use a PIN of 6 to 8 digits.</p>
+<p><strong>Import</strong> reads a file you choose (a Weekly export, a Daybook backup or a ForgetMeNot export) on your computer; nothing is sent anywhere. <strong>Merge</strong> adds the file's items to yours. <strong>Replace</strong> asks you to confirm, then swaps only the parts the file carries (tasks, notes, settings; a Daybook file carries tasks only) for the file's. Your Slack webhook is kept. If the file has private notes, Replace adopts the file's PIN record, and the private notes on this computer are removed with the rest of your notes. Guesses at a file's PIN during import are not rate-limited, because the file is offline anyway. Guesses at your own PIN, including through your own backup file, go through that same wait.</p>
+
+<h2>Your controls</h2>
+<ul>
+<li><strong>Untick</strong> any item to leave it out of an update, and <strong>Hide people and customer names</strong> to replace candidates, customers and support cases with numbered stand-ins.</li>
+<li>Turn <strong>tracking</strong> on or off in Settings. While it is on, <strong>Pause</strong> it from the side panel's footer, and list sites in <strong>Never track these sites</strong>.</li>
+<li><strong>Lock</strong> private notes at any time. <strong>Remove PIN</strong> turns them back into ordinary notes and deletes the PIN record.</li>
+<li><strong>Remove history estimates</strong> deletes estimates and turns history access off.</li>
+<li><strong>Delete everything</strong> removes tracked activity, tasks, notes, drafts and imported activity. Your settings and PIN record stay until you change them. Uninstalling the extension removes all of its data.</li>
+<li>You can revoke any optional permission at any time from <code>chrome://extensions</code>.</li>
+</ul>
+
+<h2>Children</h2>
+<p>Weekly is a workplace tool and is not directed at children.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the new version will be posted at this address with an updated date.</p>
+
+<h2>Contact</h2>
+<p>Questions or requests: <a href="mailto:srewoo@gmail.com">srewoo@gmail.com</a></p>
+</main></body></html>

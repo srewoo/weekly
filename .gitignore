@@ -27,7 +27,6 @@ Thumbs.db
 .env.*
 dist/
 brag-output/
-store-assets/
 
 # Agent workspaces
 .superpowers/
