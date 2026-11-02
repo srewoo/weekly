@@ -17,7 +17,7 @@ Everything for the Chrome Web Store submission. See `store-listing.md` for the t
 | `promo-small-440x280.png` | 440x280 | Small promo tile |
 | `promo-marquee-1400x560.png` | 1400x560 | Marquee promo tile |
 | `store-listing.md` | | Name, descriptions, permission justifications, data-usage answers, reviewer instructions |
-| `privacy-policy.html` | | Standalone policy. Host at a public URL (contact: srewoo@gmail.com, dated 1 November 2026) |
+| `privacy-policy.html` | | Standalone policy. Host at a public URL (contact: srewoo@gmail.com, dated 2 November 2026) |
 | `generate.mjs` | | Regenerates all PNGs. Needs Chromium. Run it again after any UI change |
 | `demo-data.mjs` | | The fictional engineer/PM week (tickets, MRs, notes) in the screenshots; anonymize is on for the report shot |
 

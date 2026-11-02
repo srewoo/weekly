@@ -34,8 +34,8 @@ test('the privacy policy states what Replace, PIN guesses, local storage and the
   assert.doesNotMatch(policy, /Tracked activity, history estimates and activity imported from another computer are deleted/);
 });
 
-test('the privacy policy is dated 1 November 2026, names one contact address and has no em dash', () => {
-  assert.match(policy, /Last updated: 1 November 2026/);
+test('the privacy policy is dated 2 November 2026, names one contact address and has no em dash', () => {
+  assert.match(policy, /Last updated: 2 November 2026/);
   const mails = policy.match(/[\w.+-]+@[\w-]+\.[\w.]+/g) ?? [];
   assert.ok(mails.length > 0 && mails.every((m) => m === 'srewoo@gmail.com'), mails.join());
   assert.doesNotMatch(policy, /—/);

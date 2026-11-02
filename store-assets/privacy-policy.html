@@ -24,7 +24,7 @@ a{color:var(--navy)}
 <body><main>
 <p class="kicker">Weekly</p>
 <h1>Privacy <span class="mark">policy</span></h1>
-<p class="meta">Applies to the Weekly Chrome extension, version 3.0.0. Last updated: 1 November 2026.</p>
+<p class="meta">Applies to the Weekly Chrome extension, version 3.0.0. Last updated: 2 November 2026.</p>
 
 <div class="sum"><p><strong>In short:</strong> Weekly keeps your tasks, notes and reminders on your computer. Tracking is off until you turn it on; then Weekly also keeps a log of the address and title of the Chrome tab you are working in, and for how long, for 90 days. We run no servers and receive no data. Anything that leaves your computer does so only because you chose to copy, post, export or look something up.</p></div>
 
@@ -34,8 +34,9 @@ a{color:var(--navy)}
 <li><strong>Notes you write:</strong> title, text, category, and the day a note belongs to, if any.</li>
 <li><strong>Private notes:</strong> if you set a PIN and mark a note private, its title and text are encrypted on your computer before they are stored (its category and the day it belongs to stay readable beside them) (PBKDF2-SHA256 with 310,000 rounds, then AES-GCM). The PIN itself is never stored, only a random salt and a check value. The key exists only in the memory of Weekly's background process. It is dropped when you lock, after 5 minutes without use, or sooner when Chrome stops that process. After 5 wrong PINs Weekly makes you wait, from 30 seconds up to 15 minutes, before the next try.</li>
 <li><strong>Settings:</strong> your role, reminder times and working days, light or dark appearance, sites to ignore, your own rules, and an optional Slack webhook address. Also your saved draft edits, the items you untick, the day each reminder last showed, a random ID that tells exports from different computers apart, and small interface state: which day groups you left open, your answers to the share prompts, and the device IDs of files you imported.</li>
-<li><strong>If you turn tracking on:</strong> the address (URL), page title and time spent for the <strong>active tab of the focused Chrome window</strong>, only while Chrome is in front and you are active, and a per-day count of task switches. Time stops when you go idle (default 2 minutes) or lock your screen.</li>
-<li><strong>If you choose "Fill in from history":</strong> estimated time per page for the last 15 days, built from Chrome's visit history on this computer. History synced from your other devices is skipped.</li>
+<li><strong>If you turn tracking on:</strong> the address (URL), page title and time spent for the <strong>active tab of the focused Chrome window</strong>, only while Chrome is in front and you are active, and a per-day count of task switches. Time stops when you go idle (default 2 minutes) or lock your screen, and if the computer sleeps it stops at the last minute you were active.</li>
+<li><strong>Outside Chrome:</strong> while tracking is on and you are active on your computer but Chrome is not in front (for example in your IDE or the Zoom app), Weekly counts those minutes as one "Outside Chrome" entry per day. Only the number of minutes is stored: Weekly cannot see, and does not record, which app you were using. Turn this off in Settings, under Tracking.</li>
+<li><strong>If you choose "Fill in from history":</strong> estimated time per page for the last 15 days, built from Chrome's visit history on this computer, for time Weekly did not track (days before you installed it, and the hours before tracking began on the day you did). History synced from your other devices is skipped.</li>
 </ul>
 
 <h2>What Weekly never collects</h2>
